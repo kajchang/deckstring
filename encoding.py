@@ -70,7 +70,7 @@ def encode_deck(card_list, aspects):
         _write_varint(data, aspect)
 
     for x in range(1, 4):
-        places = set(filter(lambda card_: card_[1] == x, card_list))
+        places = list(filter(lambda card_: card_[1] == x, card_list))
 
         _write_varint(data, len(places))
 
