@@ -30,3 +30,7 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   background-color: inherit;
 }
+
+input[type=text] {
+  width: 100%;
+}
