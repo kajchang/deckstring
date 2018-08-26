@@ -34,3 +34,8 @@ input[type=number] {
 input[type=text] {
   width: 100%;
 }
+
+#clipboard {
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
