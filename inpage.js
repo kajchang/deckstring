@@ -1,8 +1,13 @@
 $("#cardsearch").on("input", function() {
     $("#results").empty();
+
+    var results = 0;
+
     if ($(this).val() !== "") {
-        deckstring.cards.forEach(card => {
-            if (card["name"].toLowerCase().includes($(this).val().toLowerCase())) {
+        for (let card of deckstring.cards) {
+            if (results >= 30) {
+                break;
+            } else if (card["name"].toLowerCase().includes($(this).val().toLowerCase())) {
                 $(`<tr name="` + card["id"] + `">
                     <td><img class="mr-2" src="images/` + card["aspect"][0] + `.png" width="20" height="20"/><a href="#">` + card["name"] + `<img src="images/` + card["id"] + `.png"/></a></td>
                     <td>` + card["cost"] + `</td>
@@ -12,8 +17,10 @@ $("#cardsearch").on("input", function() {
                         </button>
                     </td>
                    </tr>`).hide().appendTo($("#results")).show("normal");
+
+                results++;
             }
-        });
+        };
     }
 });
 
