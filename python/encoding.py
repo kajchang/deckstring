@@ -2,7 +2,7 @@ import base64
 import json
 from io import BytesIO
 
-with open('ids.json') as ids_file:
+with open('../ids.json') as ids_file:
     cards = json.load(ids_file)
 
 
