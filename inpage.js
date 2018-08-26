@@ -33,7 +33,7 @@ function addCard(card_id) {
                 const aspects = deckAspects();
                 if (aspects.length < 2 | aspects.includes(card["aspect"][0])) {
                     var found = false;
-    
+
                     for (let tr of $("#deck > tr")) {
                         if ($(tr).attr("name") == card_id) {
                             if ($(tr).find("input").val() <= 2) {
@@ -42,7 +42,7 @@ function addCard(card_id) {
                             found = true;
                         }
                     }
-        
+
                     if (!found) {
                         $(`<tr name="` + card["id"] + `">
                             <td><img class="mr-2" src="images/` + card["aspect"][0] + `.png" width="20" height="20"><a href="#">` + card["name"] + `<img src="images/` + card["id"] + `.png"></a></td>
@@ -54,7 +54,7 @@ function addCard(card_id) {
                                 </button>
                             </td>
                            </tr>`).hide().appendTo($("#deck")).show("normal");
-        
+
                         $("#deck > tr > td > input").change(function() {
                             if ($(this).val() == 0) {
                                 $(this).parent().parent().remove();
@@ -62,7 +62,7 @@ function addCard(card_id) {
                             calculateDeckstring();
                         });
                     }
-                    
+
                     calculateDeckstring();
 
                     break;
@@ -106,16 +106,24 @@ function calculateDeckstring() {
     $("#deckstring").val(deckstring.encode_deck($("#deck > tr").toArray().map(tr => [parseInt($(tr).attr("name")), parseInt($(tr).find("input").val())]), deckAspects().map(aspect => 'ACDNT'.indexOf(aspect))));
 }
 
-$("#deckstring").on("input", function () {
+function fromDeckString(deckstring_) {
     $("#deck").empty();
 
-    const deck = deckstring.decode_deck($(this).val());
+    const deck = deckstring.decode_deck(deckstring_);
 
     deck[2].forEach(card => {
-        for (let x=0; x < card[1]; x++) {
+        for (let x = 0; x < card[1]; x++) {
             addCard(card[0]);
         }
     });
+}
+
+$("#deckstring").on("input", function() {
+    fromDeckString($(this).val())
 });
+
+if (new URLSearchParams(window.location.search).has("deckstring")) {
+    fromDeckString(new URLSearchParams(window.location.search).get("deckstring"));
+}
 
 calculateDeckstring();
