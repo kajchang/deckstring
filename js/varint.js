@@ -49,4 +49,3 @@ function encode(num, out, offset) {
   
   return out
 }
-
