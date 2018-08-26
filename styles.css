@@ -1,0 +1,32 @@
+input {
+    border: none;
+    font-size: 17px;
+    width: 45%;
+    outline: none;
+}
+
+table {
+  width: 48% !important;
+}
+
+a > img {
+  display: none;
+}
+
+a:hover > img {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+input[type=number] {
+  background-color: inherit;
+}
