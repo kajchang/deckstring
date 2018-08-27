@@ -49,7 +49,7 @@ function addCard(card_id) {
                             <td>` + card["cost"] + `</td>
                             <td><input type="number" min="0" max="3" placeholder="#" step="1" value="1"/></td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-light" onclick="$(this).parent().parent().remove();calculateDeckstring();">
+                                <button type="button" class="btn btn-sm btn-light" onclick="$(this).parent().parent().find('input').val(parseInt($(this).parent().parent().find('input').val())-1);if($(this).parent().parent().find('input').val()==0){$(this).parent().parent().remove();};calculateDeckstring();">
                                     <span class="fa fa-minus" aria-hidden="true"></span>
                                 </button>
                             </td>
