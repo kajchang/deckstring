@@ -27,7 +27,7 @@ $("#cardsearch").on("input", function() {
 function addCard(card_id) {
     const cardCount = countCards();
 
-    if (cardCount < 30) {
+    if (cardCount < 40) {
         for (let card of deckstring.cards) {
             if (card["id"] == card_id) {
                 const aspects = deckAspects();
@@ -75,7 +75,7 @@ function addCard(card_id) {
         }
     } else {
         // non-obtrusive alert in future
-        alert("Only 30 cards per deck");
+        alert("Only 40 cards per deck");
     }
 }
 
