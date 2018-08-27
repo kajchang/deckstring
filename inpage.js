@@ -2,25 +2,24 @@ $("#cardsearch").on("input", function() {
     $("#results").empty();
 
     var results = 0;
+    const aspects = deckAspects();
 
-    if ($(this).val() !== "") {
-        for (let card of deckstring.cards) {
-            if (results >= 30) {
-                break;
-            } else if (card["name"].toLowerCase().includes($(this).val().toLowerCase())) {
-                $(`<tr name="` + card["id"] + `">
-                    <td><img class="mr-2" src="images/` + card["aspect"][0] + `.png" width="20" height="20"/><a href="#">` + card["name"] + `<img src="images/` + card["id"] + `.png"/></a></td>
-                    <td>` + card["cost"] + `</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-light" onclick="addCard($(this).parent().parent().attr('name'));">
-                            <span class="fa fa-plus" aria-hidden="true"></span>
-                        </button>
-                    </td>
-                   </tr>`).hide().appendTo($("#results")).show("normal");
+    for (let card of deckstring.cards) {
+        if (results >= 30) {
+            break;
+        } else if (card["name"].toLowerCase().includes($(this).val().toLowerCase()) && (aspects.length < 2 | aspects.includes(card["aspect"][0]))) {
+            $(`<tr name="` + card["id"] + `">
+                <td><img class="mr-2" src="images/` + card["aspect"][0] + `.png" width="20" height="20"/><a href="#">` + card["name"] + `<img src="images/` + card["id"] + `.png"/></a></td>
+                <td>` + card["cost"] + `</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-light" onclick="addCard($(this).parent().parent().attr('name'));">
+                        <span class="fa fa-plus" aria-hidden="true"></span>
+                    </button>
+                </td>
+               </tr>`).hide().appendTo($("#results")).show("normal");
 
-                results++;
-            }
-        };
+            results++;
+        }
     }
 });
 
@@ -135,4 +134,4 @@ if (new URLSearchParams(window.location.search).has("deckstring")) {
 }
 
 calculateDeckstring();
-
+$("#cardsearch").trigger("input");
