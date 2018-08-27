@@ -70,12 +70,14 @@ function addCard(card_id) {
                 } else {
                     // non-obtrusive alert in future
                     alert("Only two aspects per deck");
+                    throw new RangeError("Only two aspects per deck");
                 }
             }
         }
     } else {
         // non-obtrusive alert in future
         alert("Only 40 cards per deck");
+        throw new RangeError("Only 40 cards per deck");
     }
 }
 
@@ -111,11 +113,17 @@ function fromDeckString(deckstring_) {
 
     const deck = deckstring.decode_deck(deckstring_);
 
-    deck[2].forEach(card => {
-        for (let x = 0; x < card[1]; x++) {
-            addCard(card[0]);
+    for (let card of deck[2]) {
+        try {
+            for (let x = 0; x < card[1]; x++) {
+                addCard(card[0]);
+            }
+        } catch (e) {
+            $("#deck").empty();
+            calculateDeckstring();
+            throw e;
         }
-    });
+    };
 }
 
 $("#deckstring").on("input", function() {
@@ -127,3 +135,4 @@ if (new URLSearchParams(window.location.search).has("deckstring")) {
 }
 
 calculateDeckstring();
+
