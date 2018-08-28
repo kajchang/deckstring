@@ -60,6 +60,18 @@ function addCard(card_id) {
                             }
                             calculateDeckstring();
                         });
+
+                        $("input[type=number]").change(function() {
+                            if ($(this).val() > 3) {
+                                $(this).val(3);
+                            }
+
+                            if (countCards() > 40) {
+                                $(this).val(parseInt($(this).val()) - 1);
+                                alert("Only 40 cards per deck");
+                                throw new RangeError("Only 40 cards per deck");
+                            }
+                        });
                     }
 
                     calculateDeckstring();
@@ -120,6 +132,8 @@ function fromDeckString(deckstring_) {
         } catch (e) {
             $("#deck").empty();
             calculateDeckstring();
+
+            alert(e.message);
             throw e;
         }
     };
