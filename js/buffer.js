@@ -1,3 +1,8 @@
+const varint = require("varint");
+
+const decode = varint.decode;
+const encode = varint.encode;
+
 // https://github.com/HearthSim/npm-deckstrings/blob/master/src/buffer.ts
 // Copyright (c) 2017-2018, Benedict Etzel
 
@@ -51,3 +56,5 @@ class BufferReader extends Iterator {
 		return value;
 	}
 }
+
+module.exports = {"BufferReader": BufferReader, "BufferWriter": BufferWriter}
