@@ -93,9 +93,7 @@ function addCard(card_id) {
         }
 
         $("#deck").find("button").off("click").click(function () {
-            console.log($(this).parent().parent().find("input").val())
             $(this).parent().parent().find("input").val(parseInt($(this).parent().parent().find("input").val()) - 1);
-            console.log($(this).parent().parent().find("input").val())
             if ($(this).parent().parent().find("input").val() == 0){
                 $(this).parent().parent().remove();
             };
