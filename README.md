@@ -4,7 +4,7 @@ An unofficial port of Hearthstone's deckstrings for NovaBlitz to make copying an
 
 ## Encoding Scheme
 
-Virtually identical to [Hearthstone's deckstrings](https://hearthsim.info/docs/deckstrings/), an deckstring consists of:
+Virtually identical to [Hearthstone's deckstrings](https://hearthsim.info/docs/deckstrings/), a deckstring consists of:
 
 ### Header Block
 1. Version (1).
@@ -25,8 +25,6 @@ Each integer is encoded as a [varint](https://developers.google.com/protocol-buf
 
 ## Implementation
 
-Loose Python and Browser implementations are included in this repository.
-
-`<script src="https://cdn.rawgit.com/kajchang/deckstring/43e7b828/js/deckstring.js"></script>`
+Loose Python and JS implementations are included in this repository.
 
 A browser demo is located [here](https://kajchang.github.io/deckstring).
