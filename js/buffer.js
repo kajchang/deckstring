@@ -57,4 +57,4 @@ class BufferReader extends Iterator {
 	}
 }
 
-module.exports = {"BufferReader": BufferReader, "BufferWriter": BufferWriter}
+module.exports = {"BufferReader": BufferReader, "BufferWriter": BufferWriter};

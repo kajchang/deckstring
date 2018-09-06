@@ -86,3 +86,5 @@ function decode_deck(deckstring) {
 
 	return [version, aspects, cards];
 }
+
+module.exports = {"cards": cards, "decode_deck": decode_deck, "encode_deck": encode_deck, "id_to_card": id_to_card, "card_to_id": card_to_id};
